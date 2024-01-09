@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>{{ parNomeDoVideo }}</title>
+</head>
+<body>
+    <h1>{{ parNomeDoVideo }}</h1>
+    <h3>Duração: {{ parDuracao }}</h3>
+    <h3>Likes: {{ parLikes }}</h3>
+    <h3>Dislikes: {{ parDislikes }}</h3>
+    <h2>Comentários:</h2>
+    {% for comentario in parComentarios %}
+        <li>{{ comentario }}</li>
+    {% endfor %}
+</body>
+</html>

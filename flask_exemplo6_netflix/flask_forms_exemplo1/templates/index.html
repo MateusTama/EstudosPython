@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    <h2>Terceirão IFC Campus Brusque 2023</h2>
+    <form method="post" action="{{ url_for('boasVindas') }}">
+        <label>Nome:</label>
+        <input type="text" placeholder="Digite seu nome aqui" name="resposta"/>
+        <input type="submit" value="Login" />
+    </form>
+    <p>Para saber mais sobre forms clique <a href="{{ url_for('formularios') }}">aqui</a>.</p>
+{% endblock %}

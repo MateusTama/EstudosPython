@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Instagram</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1><span class="highlight">Mini</span> Instagram</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="{{ 'current' if request.endpoint == 'index' else '' }}"><a href="{{ url_for('index') }}">Home</a></li>
+                    {% if 'usuario_id' not in session %}
+                        <li class="{{ 'current' if request.endpoint == 'register' else '' }}"><a href="{{ url_for('register') }}">Register</a></li>
+                        <li class="{{ 'current' if request.endpoint == 'login' else '' }}"><a href="{{ url_for('login') }}">Login</a></li>
+                    {% else %}
+                        <li>{{ session['usuario_nome'] }}</li>
+                        <li class="{{ 'current' if request.endpoint == 'upload' else '' }}"><a href="{{ url_for('upload') }}">Upload</a></li>
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="container">
+        {% block content %}
+        {% endblock %}
+    </section>
+
+    <footer>
+        <p>Mini Instagram &copy; 2023</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clubes Escolares</title>
+</head>
+<a href="{{ url_for('professores') }}">Professores</a>
+<a href="{{ url_for('estudantes') }}">estudantes</a>
+<a href="{{ url_for('clube') }}">clube</a>
+
+<body>
+
+    <h1>Bem-vindo(a)!</h1>
+    <h2>clubes:</h2>
+    <ul>
+        {% for item in parNomeClub %}
+            <li>{{ nomeDoClube }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('clube') }}">Teste url_for()</a>
+</body>
+</html>

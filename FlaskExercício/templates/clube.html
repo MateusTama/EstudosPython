@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clubes</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{ url_for('home') }}">Home</a>
+                    <a href="clube.html">Clube</a>
+                    <a href="{{ url_for('rotaEstudantes') }}">Estudantes</a>
+                    <a href="{{ url_for('rotaProfessores') }}">Professores</a>
+                </li>
+            <ul>
+        </nav>
+    </header>
+    <h1>Bem-vindo a página de Clubes</h1>
+    <h2>Digite o nome de um clube existente atrás da rota</h2>
+    <p>O clube buscado é: {{ parNomeDoClube.upper() }}</p>
+     
+    {% for clube in parClube%}
+        {% if parNomeDoClube.upper() == clube.nome.upper() %}
+            <h3>Clube:</h3>
+            <p>Nome: {{ clube.nome }}</p>
+            <p>Professor Responsável: {{ clube.professorResponsavel.nome }}</p>
+            <p>Horário da Reunião: {{ clube.horarioReuniao }}</p>
+            {% for estudantes in clube.membros %}
+                <p>Membros: {{ estudantes.nome }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+    
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Upload de Foto</h1>
+    <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+        <label for="foto">Escolha uma foto:</label>
+        <input type="file" id="foto" name="foto" required>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao"></textarea>
+
+        <input type="submit" value="Postar">
+    </form>
+{% endblock %}

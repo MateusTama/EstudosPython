@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage do Netflix</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/netflixfavicon.ico') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/netflix-logo.png') }}" alt="Netflix">
+        <nav>
+            <ul><!-- links para as defs que chamam as páginas de início (index) e de logout -->
+                <li><a href="{{ url_for('home') }}">Início</a></li>
+                <li><a href="{{ url_for('logout') }}">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="catalog">
+        <section>
+            <h2>Temas cadastrados:</h2>
+            <ul><!-- variável parCatalogo que é enviada a partir da def dashboard do main.py
+                por meio do parâmetro da função render_template  
+                a variável parCatalogo é iuma lista de temas. O tema é um objeto que possui
+                o atributo .nome e o atributo .series. O atributo .series é uma lista de series. -->                
+                {% for tema in parCatalogo %}
+                    <li><a href="{{ url_for('modificar_tema', nome_do_tema = tema.nome)}}">{{tema.nome}}</a></li>
+                {% endfor %}
+                <h3>Adicionar Tema</h3>
+                <form action="{{ url_for('adicionar_tema')}}" method="post">
+                    <label for="novo_tema">Nome:<input type="text" name="nome_tema" id="novo_tema"/></label><br/>
+                    <input type="submit" value="Adicionar"/>
+                </form>
+            </ul>
+        </section>
+        <section>
+            <h2>Séries cadastradas:</h2>
+            <ul>
+                {% for tema in parCatalogo %}
+                    <!-- cada tema possui o atributo .series, que é uma lista de series.
+                    cada serie dessa lista é um objeto, que possui o atributo .titulo. -->
+                    {% for serie in tema.series %}    
+                        <li><a href="{{ url_for('modificar_serie', titulo_da_serie=serie.titulo)}}">{{serie.titulo}}</a></li>
+                    {% endfor %}
+                {% endfor %}
+                <h3>Adicionar Série:</h3>
+                <form action="{{ url_for('adicionar_serie')}}" method="post">
+                    <!-- titulo, imagem, sinopse, temporadas, avaliacao, elenco e tema -->
+                    <label for="nova_serie">Título:<input type="text" name="titulo_serie" id="nova_serie"/></label><br/>
+                    <!-- imagem '-' -->
+                    <label for="sinopse_serie">Sinopse:<input type="text" name="sinopse_serie" id="sinopse_serie"/></label><br/>
+                    <label for="temporadas_serie">Temporadas:<input type="number" name="temporadas_serie" id="temporadas_serie"/></label><br/>
+                    <label for="avaliacao_serie">Avaliação:<input type="number" name="avaliacao_serie" id="avaliacao_serie" max="5" min="0" step="0.10"/></label><br/>
+                    <label for="elenco_serie">Elenco:<input type="text" name="elenco_serie" id="elenco_serie"/></label><br/>
+                    <!-- MENU SELECT -->
+                    <label for="tema_serie">Tema:
+                        <select name="tema_serie" id="tema_serie">
+                            <!-- FOR PARA MOSTRAR CADA OPTION DE TEMA -->
+                            {% for tema in parCatalogo %}
+                                <option value="{{tema.nome}}">{{tema.nome}}</option>
+                            {% endfor %}
+                        </select>
+                    </label><br/>
+                    <input type="submit" value="Adicionar"/>
+                </form>
+            </ul>
+        </section>        
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>    

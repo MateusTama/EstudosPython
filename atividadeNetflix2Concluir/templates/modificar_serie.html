@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{parTituloSerie}}</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/netflixfavicon.ico') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/netflix-logo.png') }}" alt="Netflix">
+        <nav>
+            <ul>
+                <li><a href="/">Início</a></li>
+                <li><a href="{{ url_for('dashboard') }}">Gerenciar</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="catalog">
+        <section>
+            <h1>Você está na série: {{ parTituloSerie }}</h1>
+            <h2>Atualizar Série</h2>
+            <form action="{{ url_for('processar_serie', titulo_da_serie=parTituloSerie)}}" method="POST">
+                <label for="attTituloSerie">Novo título:<input type="text" name="atualizar_titulo_serie" id="attTituloSerie", placeholder="{{parTituloSerie}}"/><br/></label>
+                <input type="submit" value="Atualizar">
+            </form>
+            <h2>Excluir</h2>
+            <form action="{{ url_for('excluir_serie', titulo_da_serie=parTituloSerie)}}", method="POST">
+                <label for="excluir_serie">
+                    <input type="submit" value="Excluir" id="excluir_serie"/>
+                </label>
+            </form>
+            
+        </section>
+    </main>
+    <footer>
+        <p class="direitos-autorais">Netflix &copy;2023</p>
+    </footer>
+</body>
+</html>    

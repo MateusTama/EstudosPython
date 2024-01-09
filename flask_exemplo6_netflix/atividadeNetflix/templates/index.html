@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage do Netflix</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/netflixfavicon.ico') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/netflix-logo.png') }}" alt="Netflix">
+        <nav>
+            <ul>
+                {% if session["login"] == False %}
+                <form method="POST" action="{{ url_for('login')}}"> <!--Dashboard-->
+                    <li><a href="{{ url_for('home')}}">Início</a></li>
+                    <li><input type="email" name="email" placeholder="Email"></li>
+                    <li><input type="password" name="senha" placeholder="Senha"></li>
+                    <li><input type="submit" value="login"></li>
+                </form>
+                {% else %}
+                    <li><a href="{{ url_for('logout')}}">Sair</a></li>
+                    <li><a href="{{ url_for('login')}}">Admin</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main class="catalog">
+        <section>
+            <h1>Destaque da Semana</h1>
+            <article class="destaque-item">
+                <img src="{{ url_for('static', filename='images/' + parSerieDestaque.imagem) }}" alt="{{ parSerieDestaque.titulo }}">
+                <div class="destaque-item-textos">
+                    <h2>{{ parSerieDestaque.titulo }}</h2>
+                    <p>{{ parSerieDestaque.sinopse }}</p>
+                    <aside>
+                        <ul>
+                            <li>Temporadas: {{ parSerieDestaque.temporadas }}</li>
+                            <li>Avaliação: {{ parSerieDestaque.avaliacao }}</li>
+                            <li>Elenco: {{ parSerieDestaque.elenco }}</li>
+                        </ul>
+                    </aside>
+
+                    <button>Assistir</button>
+                </div>
+            </article>            
+        </section>
+
+        {% for tema in parCatalogo %}
+        <section>
+            <h1>{{ tema.nome }}</h1>
+            {% for serie in tema.series %}
+            <article class="catalogo-item">
+                <img src="{{ url_for('static', filename='images/' + serie.imagem) }}" alt="{{ serie.titulo }}">
+                <div class="catalogo-item-textos">
+                    <h2>{{ serie.titulo }}</h2>
+                    <p>{{ serie.sinopse }}</p>
+                    <button>Assistir</button>
+                </div>
+            </article>
+            {% endfor %}
+        </section>
+        {% endfor %}
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>    

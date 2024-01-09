@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Feed de Fotos</h1>
+    <div id="postagens">
+        {% for postagem in postagens %}
+        <div class="postagem">
+            <img src="{{ url_for('static', filename='images/uploads/' + postagem.foto) }}" alt="Foto postada">
+            <p>{{ postagem.descricao }}</p>
+            <!-- Link para as postagens do usuário -->
+            <small>Postado por: <a href="{{ url_for('user_posts', user_id=postagem.usuario_id) }}">{{ postagem.usuario_nome }}</a></small>
+        </div>
+        {% else %}
+        <p>Nenhuma postagem encontrada.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

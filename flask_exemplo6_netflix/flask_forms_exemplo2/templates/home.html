@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<section>
+    <h2>Em cartaz</h2>
+    {% if temFilme %}
+    <article>
+        <img src="{{ url_for('static', filename='images/emcartaz.jpg') }}" width="200">
+        <div>
+            <h2>{{ dados["titulo"] }}</h2>
+            <p>Sinopse: {{ dados["sinopse"] }}</p>
+            <p>Duração: {{ dados["duracao"] }}min</p>
+            <p>Elenco: {{ dados["elenco"] }}</p>
+            <p>Data de exibição: {{ dados["data_exibicao"] }}</p>
+            <p>Ingresso inteira: {{ dados["inteira"] }}</p>
+            <p>Ingresso meia: {{ dados["meia"] }}</p>
+        </div>
+    </article>
+    {% else %}
+    <p>Nenhum filme em cartaz no momento.</p>
+    {% endif %}            
+</section>
+{% endblock %}

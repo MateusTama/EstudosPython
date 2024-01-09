@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    <h2>Elementos INPUT para formulários:</h2>
+    <form method="POST" action="{{ url_for('processa_formulario') }}">
+        <label>Nome:</label>
+        <input type="text" placeholder="Digite seu nome aqui" name="nome"/>
+        <label>Endereco:</label>
+        <input type="text" placeholder="Digite seu endereço aqui" name="endereco"/>
+        <label>Telefone:</label>
+        <input type="text" placeholder="Digite seu telefone aqui" name="telefone"/>
+        <input type="submit" value="Enviar" />
+    </form>
+{% endblock %}

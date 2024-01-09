@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meu Aplicativo Flask</title>
+</head>
+<body>
+    <h1>Bem-vindo(a) ao meu aplicativo Flask!</h1>
+    <h2>Teste colocar valores no final do endereço da página.</h2>
+    <p>Você está acessando a página: {{ parValor }}</p>
+
+    <h2>clubes:</h2>
+    <ul>
+        {% for item in parNomeClub %}
+            <li>{{ nomeDoClube }}</li>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

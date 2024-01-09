@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Postagens de {{ usuario_nome }}</h1>
+    <div id="postagens">
+        {% for postagem in postagens %}
+            <div class="postagem">
+                <img src="{{ url_for('static', filename='images/uploads/' + postagem.foto) }}" alt="Foto postada">
+                <p>{{ postagem.descricao }}</p>
+            </div>
+        {% else %}
+            <p>Nenhuma postagem encontrada para este usuário.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

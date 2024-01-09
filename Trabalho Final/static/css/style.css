@@ -1,0 +1,144 @@
+/* Estilos Gerais */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #bbb 1px solid;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+header ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow: hidden;
+}
+
+header li {
+    float: left;
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+
+header #branding {
+    float: left;
+}
+
+header #branding h1 {
+    margin: 0;
+}
+
+header nav {
+    float: right;
+    margin-top: 10px;
+}
+
+header .highlight, header .current a {
+    color: #e8491d;
+    font-weight: bold;
+}
+
+header a:hover {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Estilos da Página */
+article#main-col {
+    float: left;
+    width: 70%;
+}
+
+/* Estilos da Barra Lateral */
+aside#sidebar {
+    float: right;
+    width: 30%;
+    margin-top: 10px;
+}
+
+/* Estilos do Rodapé */
+footer {
+    padding: 20px;
+    margin-top: 20px;
+    color: #ffffff;
+    background-color: #e8491d;
+    text-align: center;
+}
+
+/* Estilos para Postagens */
+.postagem {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centralizar o conteúdo da postagem */
+}
+
+.postagem img {
+    max-width: 100%;  /* Largura máxima de 100% do contêiner */
+    max-height: 400px; /* Altura máxima da imagem */
+    width: auto; /* Largura automática para manter a proporção */
+    height: auto; /* Altura automática para manter a proporção */
+    display: inline-block; /* Para centralizar verticalmente se necessário */
+    object-fit: cover; /* Garante que a imagem cubra a área designada */
+}
+
+.postagem p {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.postagem small {
+    color: #666;
+}
+
+
+/* Estilos de Formulários */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: 0;
+}
+
+input[type="submit"]:hover {
+    background-color: #e8491d;
+}
+
+/* Estilos para Mensagens Flash */
+.flash-message {
+    color: red;
+    margin: 10px 0;
+}
+

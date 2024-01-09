@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Homepage do Netflix</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/netflixfavicon.ico') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/netflix-logo.png') }}" alt="Netflix">
+        <nav>
+            <ul><!-- links para as defs que chamam as páginas de início (index) e de logout -->
+                <li><a href="{{ url_for('home') }}">Início</a></li>
+                <li><a href="{{ url_for('logout') }}">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="catalog">
+        <section>
+            <h2>Temas cadastrados:</h2>
+            <ul><!-- variável parCatalogo que é enviada a partir da def dashboard do main.py
+                por meio do parâmetro da função render_template  
+                a variável parCatalogo é uma lista de temas. O tema é um objeto que possui
+                o atributo .nome e o atributo .series. O atributo .series é uma lista de series. -->                
+                {% for tema in parCatalogo %}
+                    <li>{{tema.nome}}</li>
+                {% endfor %}
+            </ul>
+        </section>
+        <section>
+            <h2>Séries cadastradas:</h2>
+            <ul>
+                {% for tema in parCatalogo %}
+                    <!-- cada tema possui o atributo .series, que é uma lista de series.
+                    cada serie dessa lista é um objeto, que possui o atributo .titulo. -->
+                    {% for serie in tema.series %}    
+                        <li>{{serie.titulo}}</li>
+                    {% endfor %}
+                {% endfor %}
+            </ul>
+        </section>        
+    </main>
+    <footer>
+    </footer>
+</body>
+</html>    

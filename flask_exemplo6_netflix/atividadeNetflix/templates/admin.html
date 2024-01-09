@@ -1,0 +1,67 @@
+
+<!-- CÓDIGO APENAS PARA VISUALIZAÇÃO, NÃO É UTILIZADO NO PROJETO -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='images/netflixfavicon.ico') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Admin</title>
+    <style>
+        form{
+            margin-top: 50px;
+            margin-left: 20px;       
+        }
+
+        input{
+            margin-top: 3px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/netflix-logo.png') }}" alt="Netflix">
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('paginaAdmin')}}">Admin</a></li>
+                <li><a href="{{ url_for('home')}}">Início</a></li>
+                <li><a href="#">Séries</a></li>
+                <li><a href="#">Filmes</a></li>
+                <li><a href="#">Minha Lista</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h2>Adicionar Série:</h2>
+        <article>
+            <!-- titulo, imagem, sinopse, temporadas, avaliacao, elenco -->
+            <form method="POST" action="{{ url_for('home') }}" enctype="multipart/form-data">
+                <label for="titulo">Titulo:
+                    <input type="text" name="titulo" id="titulo" placeholder="Insira o título"/>
+                </label><br/>
+                <label for="sinopse">Sinopse: 
+                    <input type="text" name="sinopse" id="sinopse" placeholder="Insira o texto"/>
+                </label><br/>        
+                <label for="temporadas">Temporadas:
+                    <input type="number" name="temporadas" id="temporadas" min="1" placeholder="Insira o número"/>
+                </label><br/>
+                <label for="avaliacao">Avaliação: 
+                    <!-- Valor mínimo 0 e máximo 5, adicionando 0,1. -->
+                    <input type="number" name="avaliacao" id="avaliacao" placeholder="Insira a nota" step="0,1" min="0" max="5"/>
+                </label><br/>
+                <label for="elenco">Elenco:
+                    <input type="text" name="elenco" id="elenco" placeholder="Insira o elenco"/>
+                </label><br/>
+                <!-- <label for="imagem">Imagem:
+                    Escolher arquivo, imagem, apenas jpeg 
+                    <input type="file" name="imagem" id="imagem" accept="image/jpeg"/>
+                </label><br/> -->
+                <input type="submit"/>
+            </form>
+        </article>
+    </section>
+</body>
+</html>
